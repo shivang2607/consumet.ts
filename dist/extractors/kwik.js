@@ -11,9 +11,19 @@ class Kwik extends models_1.VideoExtractor {
         this.safelinkBaseUrl = 'https://pahe.win/';
         this.extract = async (videoUrl) => {
             try {
-                const response = await fetch(`${videoUrl.href}`, {
-                    headers: { Referer: this.baseUrl },
+                const kwikUrl = videoUrl.href;
+                const response = await fetch('https://screw-403.vercel.app/api/animepahe/screw-kwik-on-serverless', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        kwikUrl,
+                    }),
                 });
+                if (!response.ok) {
+                    throw new Error(`Proxy failed: ${await response.text()}`);
+                }
                 const data = await response.text();
                 const source = (0, utils_1.safeUnpack)(/;(eval)(\(f.*?)(\n<\/script>)/s.exec(data)[2]).match(/https.*?m3u8/);
                 this.sources.push({
