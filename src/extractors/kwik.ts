@@ -10,9 +10,19 @@ class Kwik extends VideoExtractor {
 
   override extract = async (videoUrl: URL): Promise<IVideo[]> => {
     try {
-      const response = await fetch(`${videoUrl.href}`, {
-        headers: { Referer: this.baseUrl },
+      const kwikUrl = videoUrl.href;
+      const response = await fetch('https://screw-403.vercel.app/api/animepahe/screw-kwik-on-serverless', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          kwikUrl,
+        }),
       });
+      if (!response.ok) {
+        throw new Error(`Proxy failed: ${await response.text()}`);
+      }
 
       const data = await response.text();
 
