@@ -12,7 +12,7 @@ class Kwik extends models_1.VideoExtractor {
         this.extract = async (videoUrl) => {
             try {
                 const kwikUrl = videoUrl.href;
-                const response = await fetch('https://screw-403.vercel.app/api/animepahe/screw-kwik-on-serverless', {
+                const response = await fetch('https://hello-403.leapcell.app/api/animepahe/screw-kwik-on-serverless', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

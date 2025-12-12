@@ -11,7 +11,7 @@ class Kwik extends VideoExtractor {
   override extract = async (videoUrl: URL): Promise<IVideo[]> => {
     try {
       const kwikUrl = videoUrl.href;
-      const response = await fetch('https://screw-403.vercel.app/api/animepahe/screw-kwik-on-serverless', {
+      const response = await fetch('https://hello-403.leapcell.app/api/animepahe/screw-kwik-on-serverless', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
